@@ -1,0 +1,16 @@
+<div class="content">
+
+  <% if current_user %>
+    <h2>Welcome to Riderank!</h2>
+
+    <div class="menu">
+      <ul>
+        <li><%= link_to "Add ride", '' %></li>
+        <li><%= link_to "View stats", '' %></li>
+      </ul>
+    </div>
+  <% else %>
+    <h2 class="no-user">Please Sign up or Log in to start tracking your Taxi rides!</h2>
+  <% end %>
+
+</div>

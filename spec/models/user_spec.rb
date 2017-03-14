@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
     expect(user.valid?).to be_falsey
   end
 
-  it 'validates empty email uniqueness' do
+  it 'validates email uniqueness' do
     user1 = User.new(username: 'foo', email: 'test@test.com', password: 'bar')
     user1.save
     user2 = User.new(username: 'foo', email: 'test@test.com', password: 'bar')

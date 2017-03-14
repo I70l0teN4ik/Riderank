@@ -10,11 +10,11 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "POST #create" do
-    it "returns flash message about empty email" do
-      post :create, params: { session: {:email => 'rider@test.com', :password =>'ghost'} }
+    it "returns http status unauthorized" do
+      post :create, params: { session: {:email => 'foo@bar.com', :password => '' } }
 
-      expect(response).to have_http_status(:success)
-    end
+      expect(response).to have_http_status(:unauthorized)
+      end
   end
 
   describe "DELETE #destroy" do

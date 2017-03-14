@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create(username: 'foo', email: 'foo@bar.com', password: 'bar')
+
+taxies = Taxi.create([{ name: 'Uber' }, { name: 'MPT' }, { name: 'Sawa' }])

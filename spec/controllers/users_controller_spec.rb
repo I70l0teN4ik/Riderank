@@ -9,12 +9,11 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  xdescribe "POST #create" do
-    it "returns http success" do
-      post :create, params: { user: {:username => 'foo', :password =>'bar'} }
+  describe "POST #create" do
+    it "returns http status not_acceptable" do
+      post :create, params: { user: {:email => 'foo@bar.com', :password => '' } }
 
-      expect(response).to render_template(:new)
+      expect(response).to have_http_status(:not_acceptable)
     end
   end
-
 end

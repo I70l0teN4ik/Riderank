@@ -24,15 +24,9 @@ RSpec.feature 'Landing Pages', type: :feature do
     expect(page).to have_button 'Log in'
   end
 
-  context 'User logged in' do
+  context 'User has logged in' do
     before do
-      user = User.new(id: 0, username: 'foo', email: 'foo@bar.com', password: 'bar')
-      user.save
-
-      visit login_path
-      fill_in 'session[email]', with: 'foo@bar.com'
-      fill_in 'session[password]', with: 'bar'
-      click_button 'Log in'
+      log_in
     end
 
     it 'displays welcome message' do
@@ -43,14 +37,14 @@ RSpec.feature 'Landing Pages', type: :feature do
     end
 
     it 'displays add ride and view stats buttons' do
+      visit root_path
 
       expect(page).to have_link 'Add ride'
       expect(page).to have_link 'View stats'
     end
 
     after do
-      user = User.find_by_email('foo@bar.com')
-      user.delete if user
+      log_out
     end
   end
 end

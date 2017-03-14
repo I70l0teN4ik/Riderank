@@ -10,8 +10,6 @@
 
   <body>
     <div class="header">
-      <div class="container">
-
         <div class="logo">
           <h1><%= link_to "Riderank", root_path %></h1>
         </div>
@@ -29,16 +27,16 @@
               </ul>
           <% end %>
         </div>
+    </div>
 
+    <section class="container">
+      <div class="flash_messages">
+        <% flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, class: name %>
+        <% end -%>
       </div>
-    </div>
 
-    <div class="flash_messages">
-      <% flash.each do |name, msg| -%>
-          <%= content_tag :div, msg, class: name %>
-      <% end -%>
-    </div>
-
-    <%= yield %>
+      <%= yield %>
+    </section>
   </body>
 </html>

@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170310143743) do
+ActiveRecord::Schema.define(version: 20170313141631) do
+
+  create_table "rides", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "taxi_id"
+    t.string   "origin"
+    t.string   "destination"
+    t.decimal  "price",       precision: 8, scale: 2, default: "0.0"
+    t.integer  "distance",                            default: 0
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.index ["taxi_id"], name: "index_rides_on_taxi_id"
+    t.index ["user_id"], name: "index_rides_on_user_id"
+  end
+
+  create_table "taxis", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_taxis_on_name", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

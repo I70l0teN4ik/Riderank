@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       flash.now[:danger] = @user.errors.full_messages.to_sentence
-      render "new"
+      render 'new', status: :not_acceptable
     end
   end
 

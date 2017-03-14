@@ -27,10 +27,6 @@ RSpec.describe RidesController, type: :controller do
 
       expect(response).to have_http_status(:not_acceptable)
     end
-
-    after do
-      log_out
-    end
   end
 
 end

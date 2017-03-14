@@ -9,9 +9,4 @@ module SpecTestHelper
     fill_in 'session[password]', with: 'bar'
     click_button 'Log in'
   end
-
-  def log_out
-    user = User.find_by_email('foo@bar.com')
-    user.delete if user
-  end
 end

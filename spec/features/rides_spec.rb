@@ -11,8 +11,4 @@ RSpec.feature "Rides", type: :feature do
     expect(page).to have_content 'New Ride'
     expect(page).to have_button 'Add Ride'
   end
-
-  after do
-    log_out
-  end
 end

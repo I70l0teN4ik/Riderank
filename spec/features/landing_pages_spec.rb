@@ -27,24 +27,15 @@ RSpec.feature 'Landing Pages', type: :feature do
   context 'User has logged in' do
     before do
       log_in
+      visit root_path
     end
 
-    it 'displays welcome message' do
-      visit root_path
-
+    it 'displays welcome message, Log out, Add ride and View stats buttons' do
       expect(page).to have_content 'Welcome to Riderank!'
       expect(page).to have_link 'Log out'
-    end
-
-    it 'displays add ride and view stats buttons' do
-      visit root_path
-
       expect(page).to have_link 'Add ride'
       expect(page).to have_link 'View stats'
     end
 
-    after do
-      log_out
-    end
   end
 end

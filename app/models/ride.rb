@@ -11,6 +11,11 @@ class Ride < ApplicationRecord
   private
 
   def calc_distance
-    self.distance = 2828
+    unless self.distance > 0
+      d = DrivingDistanceCalculator.new(self).ride_distance
+      if d
+        self.distance = d
+      end
+    end
   end
 end

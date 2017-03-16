@@ -1,0 +1,33 @@
+<div class="content">
+  <h2>Your rides statistics</h2>
+
+  <div class="week">
+    During current week you have rode <strong><%= @week_stats[0] %> km</strong>
+    and payed <strong><%= number_to_currency(@week_stats[1], unit: '€', format: '%n %u') %></strong>
+  </div>
+
+  <h3>Your rides for current month</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Day</th>
+      <th>Rides sum</th>
+      <th>Avg. ride</th>
+      <th>Avg. price</th>
+      <th>Taxis</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @month_stats.each do |r| %>
+        <tr>
+          <td><%= r[0] %></td>
+          <td><%= "#{r[1]} km" %></td>
+          <td><%= "#{r[2]} km" %></td>
+          <td><%= number_to_currency(r[3], unit: '€', format: '%n %u') %></td>
+          <td><%= r[4] %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+

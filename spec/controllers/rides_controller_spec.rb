@@ -16,6 +16,20 @@ RSpec.describe RidesController, type: :controller do
     end
   end
 
+  describe "GET #index" do
+    it "must be redirected for empty session" do
+      get :index
+      expect(response).to have_http_status(:redirect)
+    end
+
+    it "must be success after login" do
+      log_in
+
+      get :index
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe "POST #create" do
     before do
       log_in

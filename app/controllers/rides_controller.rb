@@ -1,6 +1,11 @@
 class RidesController < ApplicationController
   before_action :require_user
 
+  def index
+    @week_stats = current_user.rides.current_week_stats
+    @month_stats = current_user.rides.current_month_stats
+  end
+
   def new
     @ride = current_user.rides.new
     @taxi_providers = Taxi.all
@@ -9,7 +14,6 @@ class RidesController < ApplicationController
   def create
     @ride = current_user.rides.new(ride_params)
     if @ride.save
-      session[:user_id] = @ride.id
       redirect_to rides_path
     else
       @taxi_providers = Taxi.all
